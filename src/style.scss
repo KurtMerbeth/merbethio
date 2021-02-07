@@ -1,8 +1,9 @@
 $backgroundcolor: #fff;
 $headercolor: rgb(23, 23, 23);
 $maincolor: rgb(49, 47, 47);
+$mainContentColor: rgb(184, 184, 184);
 $footercolor: rgb(204, 202, 202);
-$basiccolor: #737997;
+$basiccolor: #fff;
 
 @mixin main($color) {
     width: 100%;
@@ -14,10 +15,10 @@ $basiccolor: #737997;
     font-variant-caps: all-petite-caps;
     font-weight: bold;
     letter-spacing: 2px;
-    font-size: 17px;
-   // margin: auto;
+    font-size: 18px;
     margin-top: 11px;  
 }
+
 
 @mixin headerBackground() {
     background:url(
@@ -25,10 +26,27 @@ $basiccolor: #737997;
     ) repeat;
 }
 
+@mixin circle($size, $borderpx, $bordercolor, $bgcolor) {
+    border-radius: 50%;
+    height: $size;
+    width: $size;
+    border-width: $borderpx;
+    border-style: solid;
+    border-color: $bordercolor;
+    background-color: $bgcolor;
+}
 
 #root {
     height: 100%;
 }
+
+.hidden {
+    color: transparent !important;
+}
+.boldText {
+    font-weight: 920 !important;
+}
+
 body{
     margin: 0 !important;
 }
@@ -47,17 +65,30 @@ body{
             padding: 5px 5px 5px 20px;
             @include main($headercolor);
 
+            .logoCircle {
+                @include circle(35px, 3px, $basiccolor, $headercolor);
+                margin-top: 2px;
+            }
             .notLess {
                 @include headerText($basiccolor);
-                font-size: 40px;
+                font-size: 76px;
                 font-weight: lighter;
-                margin-top: -7px;
+                margin-top: -29px;
+                margin-left: -45px;
+            }
+            .name {
+                @include headerText($basiccolor);
+                margin-left: 10px;
+                margin-top: 8px;
             }
             .title {
                 @include headerText($basiccolor);
-                margin-left: 3px;
-                           
-            }
+                font-size: 13px;
+                margin-left: -139px;
+                margin-top: 25px;
+                opacity: 50%;     
+                letter-spacing: 3px;                  
+            } 
             .greaterThan {
                 @include headerText($basiccolor);
                 font-size: 44px;
@@ -65,6 +96,7 @@ body{
                 margin-top: -7px;
                 margin-left: 5px;
             }
+
             .menu {
                 @include headerText($basiccolor);
                 font-size: 14px;
@@ -74,29 +106,100 @@ body{
             }
         }
     
-        .main {
+        .home {
             //background:url(./media/scr.png);
             //background-size: 100% auto;
             @include main($maincolor);
             height: 500px;
-            display: flex;
-            position: relative;
+            display: block;
             justify-content: center;
+            display: grid;
+            align-items: flex-start;
+            align-content: flex-start;
 
-            .image {
-                background-color: #fff;
-                margin-top: 30px;
-                border-radius: 50%;
-                height: 150px;
-                width: 150px;
-                background-image: url(./media/km11.jpeg);
+            .me {
+                @include circle(100px, 3px, $mainContentColor, $mainContentColor);
+                background-image: url(./media/km22.jpeg);
                 background-repeat: no-repeat;
-                background-size: 150px;
-                background-position-x: 5px;
+                background-size: 100px;
+                background-position-x: 0px;
                 background-position-y: center;
-                border-width: 3px;
-                border-style: solid;
-                border-color: $basiccolor;
+                margin: auto;
+                margin-top: 130px;
+
+            }
+            .circleWrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 300px;
+                height: 300px;
+                margin-top: -200px;
+                animation: rotateCircle 12s infinite;
+                //background-color: #f81;
+                //opacity: 20%;
+                .one {
+                    @include circle(65px, 3px, $mainContentColor, $headercolor);
+                    margin-left: -160px;
+                    margin-top: -160px;
+                    position: absolute;
+                    background-image: url(./media/Solidity-Logo.png);
+                    background-repeat: no-repeat;
+                    background-size: 50px;
+                    background-position-x: 8px;
+                    background-position-y: center;
+                }
+                .two {
+                    @include circle(65px, 2px, $mainContentColor, $headercolor);
+                    margin-right: -200px;
+                    margin-top: -100px;
+                    position: absolute;
+                    background-image: url(./media/React-icon.png);
+                    background-repeat: no-repeat;
+                    background-size: 80px;
+                    background-position-x: -7px;
+                    background-position-y: center;
+                }
+                .three {
+                    @include circle(65px, 2px, $mainContentColor, $headercolor);
+                    margin-left: -120px;
+                    margin-top: 200px;
+                    position: absolute;
+                    background-image: url(./media/ethereum.png);
+                    background-repeat: no-repeat;
+                    background-size: 30px;
+                    background-position-x: 17px;
+                    background-position-y: center;
+                }
+            }
+            @keyframes rotateCircle {
+                0% {
+                  transform: rotate(0deg)
+                }
+                8.33%, 0% {
+                  transform: rotate(90deg)
+                }
+                33.33%, 0% {
+                  transform: rotate(180deg)
+                }
+                58.33%, 0% {
+                  transform: rotate(270deg)
+                }
+                83.33%, 0% {
+                  transform: rotate(360deg)
+                }
+              }
+
+            .name {
+                @include headerText($mainContentColor);
+                font-size: 35px;
+                font-weight: lighter;
+                margin: auto;
+                margin-top: 10px;
+            }
+            .title {
+                margin: auto;
+                color: $mainContentColor;
             }
         }
     
