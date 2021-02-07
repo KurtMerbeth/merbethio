@@ -1,0 +1,107 @@
+$backgroundcolor: #fff;
+$headercolor: rgb(23, 23, 23);
+$maincolor: rgb(49, 47, 47);
+$footercolor: rgb(204, 202, 202);
+$basiccolor: #737997;
+
+@mixin main($color) {
+    width: 100%;
+    background-color: $color;
+}
+
+@mixin headerText($color) {
+    color: $color;
+    font-variant-caps: all-petite-caps;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 17px;
+   // margin: auto;
+    margin-top: 11px;  
+}
+
+@mixin headerBackground() {
+    background:url(
+        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATklEQVQoU2NkYGAwZmBgOMuAACA+CKCIMSIpADGRNaEYgKwQ3WQUjTCF6CYhWw2WAynEpgjmIpg7jUlSiM0TWK2GWUOUZ7ApxggeogIcABHJFtftKVfJAAAAAElFTkSuQmCC
+    ) repeat;
+}
+
+
+#root {
+    height: 100%;
+}
+body{
+    margin: 0 !important;
+}
+.app {
+    height: 100%;
+    display: flex;
+    position: relative;
+    background-color: $backgroundcolor;
+    justify-content: center;
+
+    .appBox{
+        width: 100%;
+        .header {
+            @include headerBackground();
+            height: 55px;
+            padding: 5px 5px 5px 20px;
+            @include main($headercolor);
+
+            .notLess {
+                @include headerText($basiccolor);
+                font-size: 40px;
+                font-weight: lighter;
+                margin-top: -7px;
+            }
+            .title {
+                @include headerText($basiccolor);
+                margin-left: 3px;
+                           
+            }
+            .greaterThan {
+                @include headerText($basiccolor);
+                font-size: 44px;
+                font-weight: 900;
+                margin-top: -7px;
+                margin-left: 5px;
+            }
+            .menu {
+                @include headerText($basiccolor);
+                font-size: 14px;
+                margin-top: 13px;
+                margin-right: 12px !important;  
+                margin: auto; 
+            }
+        }
+    
+        .main {
+            //background:url(./media/scr.png);
+            //background-size: 100% auto;
+            @include main($maincolor);
+            height: 500px;
+            display: flex;
+            position: relative;
+            justify-content: center;
+
+            .image {
+                background-color: #fff;
+                margin-top: 30px;
+                border-radius: 50%;
+                height: 150px;
+                width: 150px;
+                background-image: url(./media/km11.jpeg);
+                background-repeat: no-repeat;
+                background-size: 150px;
+                background-position-x: 5px;
+                background-position-y: center;
+                border-width: 3px;
+                border-style: solid;
+                border-color: $basiccolor;
+            }
+        }
+    
+        .footer {
+            @include main($footercolor);
+        }    
+    }    
+}
